@@ -31,6 +31,8 @@ jobs:
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
       - name: Deploy to ec2
         run: |
-          ssh -i ${{ secrets.AWS_PRIVATEKEY }} ${{ secrets.AWS_USERNAME }}@${{ secrets.AWS_HOSTNAME }}
+          echo "${{ secrets.AWS_PRIVATEKEY }}" > pravate_key && chmod400 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.AWS_USERNAME }}@${{ secrets.AWS_HOSTNAME }}
             sudo systemctl stop docker
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
             docker run -d -p 80:8000 ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
