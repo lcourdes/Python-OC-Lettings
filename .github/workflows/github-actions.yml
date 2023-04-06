@@ -1,6 +1,11 @@
 name: GitHub Actions OC Letting Site
 run-name: ${{ github.actor }} is running out GitHub Actions OC Letting Site
 on: [push]
+env:
+  ALLOWED_HOSTS: "['${{ secrets.AWS_HOSTNAME }}', '127.0.0.1']"
+  PORT: 8000
+  DEBUG: False
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,5 +41,5 @@ jobs:
           
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
             sudo systemctl restart docker
-            docker run -d -p 80:8000 -e PORT=8000 -e ALLOWED_HOSTS="['${{ secrets.AWS_HOSTNAME }}', '127.0.0.1']" -e DEBUG=False ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
+            docker run -d -p 80:8000 -e PORT=$PORT -e ALLOWED_HOSTS=$ALLOWED_HOSTS -e DEBUG=$DEBUG ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
           '
