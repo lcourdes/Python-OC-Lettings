@@ -5,6 +5,7 @@ WORKDIR /app
 
 ENV PORT=8000
 ENV ALLOWED_HOSTS="localhost ec2-15-236-202-82.eu-west-3.compute.amazonaws.com 15.236.202.82"
+ENV DEBUG=False
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
