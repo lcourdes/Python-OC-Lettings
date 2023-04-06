@@ -36,5 +36,5 @@ jobs:
           
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
             sudo systemctl restart docker
-            docker run -d -p 80:8000 ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
+            docker run -d -p 80:8000 -e PORT=8000 -e ALLOWED_HOSTS="['${{ secrets.AWS_HOSTNAME }}', '127.0.0.1']" -e DEBUG=False ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
           '
