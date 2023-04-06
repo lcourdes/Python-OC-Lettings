@@ -24,6 +24,7 @@ jobs:
         env: 
           PORT: 8000
           DEBUG: False
+          ALLOWED_HOSTS: 'localhost'
       - name: Log into the Docker Hub
         uses: docker/login-action@v2
         with:
