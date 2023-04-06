@@ -3,7 +3,7 @@ FROM python:3.10-alpine
 ADD . /app/
 WORKDIR /app
 
-ENV PORT=$PORT
+ENV PORT=8000
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
