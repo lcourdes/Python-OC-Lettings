@@ -4,7 +4,7 @@ on: [push]
 env:
   ALLOWED_HOSTS: "['${{ secrets.AWS_HOSTNAME }}', '127.0.0.1']"
   PORT: 8000
-  DEBUG: False
+  DEBUG: True
 
 jobs:
   build:
