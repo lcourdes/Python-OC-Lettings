@@ -4,7 +4,6 @@ ADD . /app/
 WORKDIR /app
 
 ENV PORT=8000
-ENV ALLOWED_HOSTS="localhost ${{ secrets.AWS_HOSTNAME }}"
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt

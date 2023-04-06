@@ -37,6 +37,7 @@ jobs:
           echo "${{ secrets.AWS_PRIVATEKEY }}" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.AWS_USERNAME }}@${{ secrets.AWS_HOSTNAME }} '
           
+            export ALLOWED_HOSTS="localhost ${{ secrets.AWS_HOSTNAME }}"
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
             sudo systemctl restart docker
             docker run -d -p 80:8000 -e ALLOWED_HOSTS=$ALLOWED_HOSTS ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
