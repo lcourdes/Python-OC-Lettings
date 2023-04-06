@@ -42,5 +42,5 @@ jobs:
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
             sudo systemctl restart docker
-            docker run -d -p 80:8000 -e "PORT=8000" -e "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
+            docker run -d -p 80:8000 -e "PORT=8000" -e "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" _e "ALLOWED_HOSTS='localhost 127.0.0.1 ${{ secrets.AWS_HOSTNAME }} ${{ secrets.AWS_IP_PUBLIC }}'" ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
           '
