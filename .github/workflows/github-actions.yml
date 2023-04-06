@@ -41,5 +41,5 @@ jobs:
           
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
             sudo systemctl restart docker
-            docker run -d -p 8000:80 -e PORT=$PORT -e ALLOWED_HOSTS=$ALLOWED_HOSTS -e DEBUG=$DEBUG ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
+            docker run -d -p 80:8000 -e PORT=$PORT -e ALLOWED_HOSTS=$ALLOWED_HOSTS -e DEBUG=$DEBUG ${{ secrets.DOCKERHUB_USERNAME }}/oc-lettings-site:${{github.sha}}
           '
