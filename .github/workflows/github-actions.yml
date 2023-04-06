@@ -1,10 +1,6 @@
 name: GitHub Actions OC Letting Site
 run-name: ${{ github.actor }} is running out GitHub Actions OC Letting Site
 on: [push]
-env:
-  PORT: 8000
-  DEBUG: True
-
 jobs:
   build:
     runs-on: ubuntu-latest
