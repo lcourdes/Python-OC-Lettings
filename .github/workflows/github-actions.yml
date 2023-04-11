@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is running out GitHub Actions OC Letting Site
 on: [push]
 
 jobs:
-  test and lint:
+  test_and_lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
   dockerize:
     runs-on: ubuntu-latest
-    needs: test and lint
+    needs: test_and_lint
     if: github.ref == 'refs/heads/main'
     steps: 
       - name: Log into the Docker Hub
