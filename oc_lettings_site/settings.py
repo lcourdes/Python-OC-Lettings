@@ -36,7 +36,8 @@ else:
     DEBUG = False
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'ec2-15-236-202-82.eu-west-3.compute.amazonaws.com', 'localhost']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = []
 
 # Application definition
 
