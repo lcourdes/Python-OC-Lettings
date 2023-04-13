@@ -7,4 +7,4 @@ export PORT=8000
 
 docker pull $1
 sudo systemctl restart docker
-docker run -d -p 8000:8000 -e "PORT=8000" -e "DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY" -e "ALLOWED_HOSTS=$ALLOWED_HOSTS" -e "DEBUG=$DEBUG" $1
+docker run -d -p 8000:8000 -e "PORT=8000" -e "SENTRY_DSN=$SENTRY_DSN" -e "DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY" -e "ALLOWED_HOSTS=$ALLOWED_HOSTS" -e "DEBUG=$DEBUG" $1

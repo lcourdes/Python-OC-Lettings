@@ -5,7 +5,11 @@ from sentry_sdk.integrations.django import DjangoIntegration
 sentry_sdk.init(
     dsn=os.getenv('SENTRY_DSN'),
     integrations=[
-        DjangoIntegration(),
+        DjangoIntegration(
+            transaction_style='url',
+            middleware_spans=True,
+            signals_spans=False,
+        ),
     ],
 
     # Set traces_sample_rate to 1.0 to capture 100%
